@@ -1,4 +1,4 @@
-var calc = {
+let calc = {
     numbA: '',
     act: null,
     numbB: '',
@@ -6,24 +6,24 @@ var calc = {
     vvd: null,
 }
 
-var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-var actions = ['plus', 'mine', 'divi', 'mult'];
+const actions = ['plus', 'mine', 'divi', 'mult'];
 
 $(document).ready(function() {
     console.log(calc);
 
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < numbers.length; i++) {
         const e = numbers[i];
 
-        $("#1").click(function() {
-            console.log('#1');
+        $("#" + e).click(function() {
+            console.log('#' + e);
     
             if (!calc.act) {
-                calc.numbA += '1';
+                calc.numbA += e;
                 showvvd(calc.numbA);
             } else {
-                calc.numbB += '1';
+                calc.numbB += e;
                 showvvd(calc.numbB);
             }
     
@@ -31,15 +31,19 @@ $(document).ready(function() {
         });   
     }
         
+    for (let i = 0; i < array.length; i++) {
+        const e = actions[i];
+
+        $("#" + e).click(function() {
+            console.log('#' + e);
+    
+            calc.act = e;
+    
+            console.log(calc);
+        });   
     }
 
-    $("#plus").click(function() {
-        console.log('#plus');
-
-        calc.act = 'plus';
-
-        console.log(calc);
-    });   
+ 
 
     $("#rvn").click(function() {
         console.log('#rvn');
@@ -51,15 +55,15 @@ $(document).ready(function() {
         }
 
         if (calc.act === 'mine') {
-            calc.vvd = Number(calc.numbA) + Number(calc.numbB);
+            calc.vvd = Number(calc.numbA) - Number(calc.numbB);
         }
 
         if (calc.act === 'divi') {
-            calc.vvd = Number(calc.numbA) + Number(calc.numbB);
+            calc.vvd = Number(calc.numbA) / Number(calc.numbB);
         }
 
         if (calc.act === 'mult') {
-            calc.vvd = Number(calc.numbA) + Number(calc.numbB);
+            calc.vvd = Number(calc.numbA) * Number(calc.numbB);
         }
 
         showvvd(calc.vvd);
